@@ -1,0 +1,34 @@
+1. Customer Spending
+
+A company wants to identify its highest-value customers.
+
+Question:
+Find the top 5 customers based on the total amount they spent on completed orders.
+
+2. Employee Salary
+
+HR wants to understand salary differences within each department.
+
+Question:
+Find the employee who earns the second-highest salary in each department.
+
+3. Sales Performance
+
+The sales team wants to know whether revenue is improving each month.
+
+Question:
+Show the monthly revenue and calculate the percentage change compared with the previous month.
+
+4. Inactive Customers
+
+The marketing team wants to target customers who have never purchased anything.
+
+Question:
+Find all customers who have never placed an order.
+
+5. User Engagement
+
+The product team wants to identify highly engaged users.
+
+Question:
+Find users who were active for at least 3 consecutive days, and show when each streak started and ended.
