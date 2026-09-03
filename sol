@@ -1,0 +1,5 @@
+SELECT customer_id, SUM(amount) AS total_revenue FROM orders WHERE status = 'Completed' GROUP BY customer_id ORDER BY total_revenue DESC LIMIT 5;
+SELECT employee_id, employee_name, department, salary FROM (SELECT *, DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) AS rnk FROM employees) t WHERE rnk = 2;
+SELECT DATE_FORMAT(sale_date, '%Y-%m') AS month, SUM(amount) AS revenue, ROUND((SUM(amount) - LAG(SUM(amount)) OVER(ORDER BY DATE_FORMAT(sale_date, '%Y-%m'))) / LAG(SUM(amount)) OVER(ORDER BY DATE_FORMAT(sale_date, '%Y-%m')) * 100, 2) AS mom_growth_pct FROM sales GROUP BY DATE_FORMAT(sale_date, '%Y-%m');
+SELECT c.customer_id, c.customer_name FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id WHERE o.customer_id IS NULL;
+WITH x AS (SELECT user_id, activity_date, DATE_SUB(activity_date, INTERVAL ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY activity_date) DAY) AS grp FROM user_activity) SELECT user_id, MIN(activity_date) AS start_date, MAX(activity_date) AS end_date, COUNT(*) AS active_days FROM x GROUP BY user_id, grp HAVING COUNT(*) >= 3;
